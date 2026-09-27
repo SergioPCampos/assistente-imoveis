@@ -5,8 +5,10 @@ from google.genai import types
 import pandas as pd
 import streamlit as st
 
-# A sua chave de API do Gemini
-os.environ["GEMINI_API_KEY"] = ""GEMINI_API_KEY""
+# Configuração da chave de API através dos Secrets do Streamlit
+import streamlit as st
+if "GEMINI_API_KEY" in st.secrets:
+    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 
 client = genai.Client()
 
